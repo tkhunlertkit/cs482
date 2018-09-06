@@ -5,12 +5,12 @@
     <title>Purchase</title>
   </head>
   <body>
-    <form method="post" action="http://jkorpela.fi/cgi-bin/echo.cgi">
+    <form method="POST" action="http://webdevbasics.net/scripts/demo.php">
       <label>Name:</label><input type="text" name="name" placeholder="John Doe" required="required" /><br>
       <label>email:</label><input type="email" name="email" placeholder="example@example.com" required="required" /><br>
       <label>website:</label><input type="url" name="url" placeholder="www.example.com" required="required" /><br>
       <label>phone:</label><input type="text" name="phone" placeholder="(123)-456-789" pattern="^\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required="required" /><br>
-      <label>Address:</label><textarea rows="2" cols="20" name="address"></textarea><br>
+      <label>Address:</label><textarea rows="2" cols="20" name="address" required="required"></textarea><br>
       <label>City:</label><input type="text" name="city" required="required" /><br>
       <label>State:</label>
       <select name="state">
@@ -21,7 +21,7 @@
       </select><br>
       <label>Zip</label><input type="text" pattern="^\d{5}$" required="required" /><br>
       <label>username:</label><input type="text" name="username" placeholder="jdoe" pattern="^[A-Za-z]+$" required="required" /><br>
-      <label>password:</label><input type="password" name="password" pattern="^[A-Za-z0-9]*$" required="required" /><br>
+      <label>password:</label><input type="password" name="password" pattern="^[A-Za-z0-9]+$" required="required" /><br>
       <label>quantity:</label><input type="number" name="quantity" min="1" max="20" required="required" /><br>
       <label>Size:</label>
       <div>
@@ -32,13 +32,13 @@
 
       <label>Features</label>
       <div>
-        <input type="checkbox" name="features" value="spicy" />Spicy<br>
-        <input type="checkbox" name="features" value="delicious" />Delicious<br>
-        <input type="checkbox" name="features" value="awesome" />Awesome<br>
+        <input type="checkbox" name="feature-spicy" value="spicy" />Spicy<br>
+        <input type="checkbox" name="feature-delicious" value="delicious" />Delicious<br>
+        <input type="checkbox" name="feature-awesome" value="awesome" />Awesome<br>
       </div>
 
       <label>Date Arrival</label><input type="date" name="dateArrival" required="required" /><br>
-      <label>Instructions</label><textarea rows="4" cols="30" placeholder="Leave some instruction"></textarea><br>
+      <label>Instructions</label><textarea rows="4" cols="30" name="instruction" placeholder="Leave some instruction"></textarea><br>
 
       <br>
       <input type="submit" value="Submit da form" />
