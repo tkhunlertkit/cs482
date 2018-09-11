@@ -1,0 +1,17 @@
+<head>
+    <title>blah</title>
+</head>
+<body>
+    <script>
+        function func() {
+            var f = document.forms["myForm"];
+            var test = f["test"].value;
+            document.write(test);
+            return true;
+        }
+    </script>
+    <form action="#" onsubmit="return func()" name="myForm">
+        <input type="text" name="test" />
+        <input type="button" value="click" />
+    </form>
+</body>
