@@ -1,0 +1,32 @@
+table {
+	border-collapse: collapse;
+	color: #669;
+}
+
+tr:nth-child(2n+1) {
+	background-color: #eee;
+}
+
+tr:hover {
+	background-color: #ccc;
+}
+
+th {
+	text-transform: uppercase;
+	border-bottom: 2px solid #000;
+	background-color: #fff;
+}
+
+td {
+	padding: 10px;
+	text-align: center;
+	border: 1px dotted #dbdbdb;
+}
+
+tbody {
+	border: 1px solid #dbdbdb;
+}
+
+td:nth-child(3) {
+	color: red;
+}

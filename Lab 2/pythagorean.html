@@ -2,39 +2,48 @@
 <html lang="en">
 
 <head>
-    <title>This is my turtle</title>
+    <title>This is my turtle?</title>
     <link rel="stylesheet" type="text/css" href="pythagorean.css">
+    <script type="text/javascript" src="pythagorean.js"></script>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>A</th>
-                <th>B</th>
-                <th>C</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>12</td>
-                <td>13</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>8</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>12</td>
-                <td>15</td>
-            </tr>
-        </tbody>
-    </table>
+    <form action="http://webdevbasics.net/scripts/demo.php" method="POST" onsubmit="return validateForm()" name="myForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>12</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>12</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td><input type="number" name="a" min="1" placeholder="3" required /></td>
+                    <td><input type="number" name="b" min="1" placeholder="4" required /></td>
+                    <td><input type="number" name="c" min="1" placeholder="5" required /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Submit" id="submit" />
+    </form>
 </body>
