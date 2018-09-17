@@ -28,9 +28,6 @@ function createCardDiv(card) {
     console.log(card + " :: " + suit + ", " + number);
 
     // Create image div
-    var img = document.createElement("img");
-    img.setAttribute("src", "cards.jpg");
-    img.setAttribute("alt", "");
     var imageDiv = document.createElement("div");
     imageDiv.setAttribute("class", "card");
     imageDiv.setAttribute("style", "background-image: url(cards.jpg); background-position: " + yCoor + "px " + xCoor + "px");
@@ -38,22 +35,28 @@ function createCardDiv(card) {
     return imageDiv;
 }
 
-function hit(deck) {
-
+function deal() {
+    deck = makeDeck();
+    shuffle(deck);
+    document.getElementById("cards").innerHTML = "";
+    document.getElementById("hit").setAttribute("class", "");
 }
 
 function draw() {
+    hand = document.getElementById("cards");
+    if (hand.childElementCount < 5) {
+        hand.appendChild(createCardDiv(deck.pop()));
+    }
 
+    if (hand.childElementCount >= 5) {
+        document.getElementById("hit").setAttribute("class", "disabled");
+    }
 }
 
 function setup() {
-    deck = makeDeck();
-    shuffle(deck);
-
-    for (var i=0; i<deck.length; i++) {
-        var currCard = createCardDiv(deck[i]);
-        document.getElementById("cards").appendChild(currCard);
-    }
+    deal();
+    document.getElementById("deal").addEventListener("click", deal);
+    document.getElementById("hit").addEventListener("click", draw);
 }
 
 window.addEventListener("load", setup);

@@ -1,9 +1,27 @@
+button {
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-color: #ccc;
+    border-style: solid;
+    line-height: 2;
+}
+
 .card {
     height: 98px;
     width: 71px;
-    float: left;
+    margin: 5px;
+    /* float: left; */
+    display: inline-block;
 }
 
-/* body {
-    background-image: url(cards.jpg);
-} */
+.disabled:hover, .disabled {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+
+
+#buttons {
+    padding: 20px;
+}
