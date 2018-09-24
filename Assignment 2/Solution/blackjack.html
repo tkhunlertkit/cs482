@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Card Game</title>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="blackjack.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="player" class="hand">
+        <div id="player-cards"></div>
+        <div id="player-score"></div>
+      </div>
+
+      <div id="buttons">
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <button id="deal">Deal</button>
+        <div id="status"></div>
+      </div>
+
+      <div id="computer" class="hand">
+        <div id="computer-score"></div>
+        <div id="computer-cards"></div>
+      </div>
+    </div>
+  </body>
+
+  <script src="blackjack.js"></script>
+</html>

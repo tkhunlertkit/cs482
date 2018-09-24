@@ -1,0 +1,41 @@
+.card {
+    height: 98px;
+    width: 71px;
+    margin: 5px;
+    background-image: url(cards.jpg);
+    display: inline-block;
+}
+
+.disabled:hover, .disabled {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+
+#container {
+    text-align: center;
+    position: absolute;
+    height: 413px;
+    top: 40%;
+    margin-top: -203px;
+    width: 800px;
+    left: 50%;
+    margin-left: -400px;
+}
+
+#buttons, #player-score, #computer-score {
+    padding: 20px;
+}
+
+#player-score:before , #computer-score:before {
+    content: "Score: ";
+}
+
+button {
+    line-height: 1.5;
+    border: 1px solid transparent;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 6px 15px;
+    border-radius: 4px;
+}
