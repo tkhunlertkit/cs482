@@ -2,8 +2,10 @@ var deck;
 
 function makeDeck() {
     var deck = []
-    for (var i=0; i<52; i++) {
-        deck.push(i);
+    for (let i=0; i<13; i++) {
+        for (let j=0; j<4; j++) {
+            deck.push(i + j/10.0);
+        }
     }
 
     return deck;
@@ -11,7 +13,7 @@ function makeDeck() {
 
 function shuffle(deck) {
     var numCards = deck.length;
-    for (var i=0; i<numCards; i++) {
+    for (let i=0; i<numCards; i++) {
         var j = Math.floor(Math.random() * numCards);
         var t = deck[i];
         deck[i] = deck[j];
@@ -20,12 +22,11 @@ function shuffle(deck) {
 }
 
 function createCardDiv(card) {
-    var suit = Math.floor(card / 13);
-    var number = 13 - card % 13;
+    var suit = (card * 10) % 10;
+    var number = 13 - Math.floor(card);
 
     xCoor = suit * 98;
     yCoor = number * 73;
-    console.log(card + " :: " + suit + ", " + number);
 
     // Create image div
     var imageDiv = document.createElement("div");
@@ -36,27 +37,22 @@ function createCardDiv(card) {
 }
 
 function deal() {
-    deck = makeDeck();
-    shuffle(deck);
     document.getElementById("cards").innerHTML = "";
-    document.getElementById("hit").setAttribute("class", "");
-}
-
-function draw() {
     hand = document.getElementById("cards");
-    if (hand.childElementCount < 5) {
+    while (hand.childElementCount < 5 && deck.length > 0) {
         hand.appendChild(createCardDiv(deck.pop()));
     }
 
-    if (hand.childElementCount >= 5) {
-        document.getElementById("hit").setAttribute("class", "disabled");
+    if (deck.length <= 0) {
+        document.getElementById("deal").setAttribute("class", "disabled");
+        document.getElementById("deal").disabled = true;
     }
 }
 
 function setup() {
-    deal();
+    deck = makeDeck();
+    shuffle(deck);
     document.getElementById("deal").addEventListener("click", deal);
-    document.getElementById("hit").addEventListener("click", draw);
 }
 
 window.addEventListener("load", setup);
