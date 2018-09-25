@@ -56,6 +56,10 @@ function validateEmails(evt) {
     var emails = getEmailInputs();
 
     for (var i=0; i<emails.length; i++) {
+        emails[i].setAttribute("class", "");
+    }
+
+    for (var i=0; i<emails.length; i++) {
         for (var j=i+1; j<emails.length; j++) {
             if (emails[i].value == emails[j].value) {
                 emails[i].setAttribute("class", "error");

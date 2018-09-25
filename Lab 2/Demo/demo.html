@@ -1,17 +1,10 @@
 <head>
-    <title>blah</title>
+    <title>Demo</title>
+    <script type="text/javascript" src="demo.js" ></script>
 </head>
 <body>
-    <script>
-        function func() {
-            var f = document.forms["myForm"];
-            var test = f["test"].value;
-            document.write(test);
-            return true;
-        }
-    </script>
-    <form action="#" onsubmit="return func()" name="myForm">
-        <input type="text" name="test" />
-        <input type="button" value="click" />
+    <form action="#" onsubmit="return load()">
+        <input type="text" id="myMyText" name="myText" />
+        <input type="submit" value="submit" />
     </form>
 </body>

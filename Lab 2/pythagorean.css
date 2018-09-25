@@ -1,7 +1,7 @@
 table {
     color: rgb(102,102,153);
-    border-collapse: collapse;
     font-size: 20px;
+    border-collapse: collapse;
 }
 
 td:last-child {
@@ -16,7 +16,6 @@ td {
 
 tbody {
     border: 1px solid rgb(202,202,202);
-    border-collapse: collapse;
 }
 
 tbody tr:nth-child(even) {
@@ -27,11 +26,10 @@ tbody tr:nth-child(odd) {
     background-color: rgb(220,220,220)
 }
 
-thead th{
+thead{
     border-left: none;
     border-bottom: 2px solid black;
     background-color: white;
-    border-collapse: collapse;
 }
 
 input {
