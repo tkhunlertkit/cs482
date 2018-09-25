@@ -1,0 +1,37 @@
+\documentclass{exam}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\begin{center}
+	\textbf{CS 482 - Rich Internet Applications} \\
+	\textbf{Section 802} \\
+	\vspace{5mm}
+	\makebox[\textwidth]{Name :\enspace\hrulefill} \\
+\end{center}
+
+
+\begin{questions}
+	\question[10] Write a valid HTML document which contains an \texttt{unordered list}: \texttt{kale, quinoa, avocado toast}. Beneath the list is a button ``\texttt{add item}". Each time the \texttt{add item} button is pressed, a new item is added to the list. 
+	
+	\textbf{For up to eight points}: the new item added is always \texttt{cheese curds}. So if \texttt{add item} is clicked \emph{seven} times, the list will contain 10 items, and the last seven items will be cheeses curds.
+	
+	\textbf{For up to 10 points}: The new items should cycle through \texttt{brats, cheese curds, frozen custard}. So the first time add item is clicked brats is added to the lists, then cheese curds, etc. If the button is clicked five times the list will be:
+	\texttt{
+		\begin{itemize}
+			\item kale
+			\item quinoa
+			\item avocado toast
+			\item brats
+			\item cheese curds
+			\item frozen custard
+			\item brats
+			\item cheese curds
+		\end{itemize}
+	}
+	
+	All javascript code should be contained in a \texttt{script} element in the \texttt{head} of the document, except that you may use the event attributes (like \texttt{onclick}) of an element to call a function.
+\end{questions}
+
+\end{document}
