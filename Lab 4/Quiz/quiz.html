@@ -1,0 +1,22 @@
+<head>
+    <script>
+        var items = ['brats', 'cheese curds', 'frozen custard'];
+        var nextItem = 0;
+
+        function newItem() {
+            var item = document.createElement("li");
+            item.appendChild(document.createTextNode(items[nextItem]));
+            document.getElementById("groc").appendChild(item);
+            nextItem = (nextItem + 1) % items.length;
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="groc">
+        <li>kale</li>
+        <li>quinoa</li>
+        <li>avocado toast</li>
+    </ul>
+    <button onclick="newItem()">Add Item</button>
+</body>

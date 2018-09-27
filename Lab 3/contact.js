@@ -51,7 +51,9 @@ function makeNew() {
     document.getElementById("form").insertBefore(newEmailDiv, getSubmitButton());
 }
 
-function validateEmails(evt) {
+function validateEmails() {
+
+    event.preventDefault();
     var isError = false;
     var emails = getEmailInputs();
 
@@ -70,7 +72,7 @@ function validateEmails(evt) {
     }
 
     if (isError) {
-        evt.preventDefault();
+        event.preventDefault();
     }
 }
 

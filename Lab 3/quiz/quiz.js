@@ -1,17 +1,8 @@
-var count = 0;
-var total = 0;
-while (count <= 5) {
-    total = total + 10;
-    count = count + 1;
-}
-document.body.innerHTML = total;
+var x = 11;
+var y = 14;
 
-function setup() {
-    document.title = "TEST";    
-    
-    
-}
-
-
-
-window.addEventListener("load", setup);
+if (x > 13)
+    if (y > 13)
+        alert('');
+    else 
+        alert('');
