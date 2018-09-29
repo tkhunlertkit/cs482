@@ -12,7 +12,7 @@
 }
 
 .accordian + * {
-	display: block;
+	display: none;
 	color: #000;
 	text-decoration: none;
 }
