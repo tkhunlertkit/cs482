@@ -1,7 +1,6 @@
 var swapElements = {};
 
 var createAccordian = function(accordianElem) {
-	// TODO: Implement createAccordian.
 	let index = $(".accordian").index(accordianElem.prev());
 	if (swapElements[index].count % 2 == 0) {
 		let temp = swapElements[index].text;
@@ -14,7 +13,6 @@ var createAccordian = function(accordianElem) {
 };
 
 $(document).ready(function() {
-	// TODO: Use createAccordian to made the FAQ page expandable and collapsible.
 	$(".accordian").each(function(i, obj) {
 		$(this).next().hide();
 		swapElements[i] = {
