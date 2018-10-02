@@ -7,7 +7,6 @@ var createAccordian = function(accordianElem) {
 		swapElements[index].text = accordianElem.html();
 		accordianElem.html(temp);
 	}
-
 	accordianElem.slideToggle(200);
 	swapElements[index].count++;
 };
@@ -17,7 +16,7 @@ $(document).ready(function() {
 		$(this).next().hide();
 		swapElements[i] = {
 			count: 0,
-			text: "click me more to reveal the secret",
+			text: "Click to reveal the secret",
 		};
 	});
 
