@@ -12,7 +12,7 @@ var createAccordian = function(accordianElem) {
 };
 
 $(document).ready(function() {
-	$(".accordian").each(function(i, obj) {
+	$(".accordian").each(function(i) {
 		$(this).next().hide();
 		swapElements[i] = {
 			count: 0,

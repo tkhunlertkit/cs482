@@ -1,13 +1,11 @@
 <head>
     <script>
         var items = ['brats', 'cheese curds', 'frozen custard'];
-        var nextItem = 0;
 
         function newItem() {
-            var item = document.createElement("li");
-            item.appendChild(document.createTextNode(items[nextItem]));
-            document.getElementById("groc").appendChild(item);
-            nextItem = (nextItem + 1) % items.length;
+            let item = items.remove();
+            document.getElementById("groc").innerHTML += "<li>" + item + "</li>";
+            items.push(item);
         }
     </script>
 </head>
