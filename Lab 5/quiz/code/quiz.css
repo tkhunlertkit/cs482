@@ -1,0 +1,19 @@
+div {
+    background-image: url(dice.jpg);
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 5px;
+}
+
+#this1 {
+    background-position: 80px 40px;
+}
+
+#this2 {
+    background-position: -40px -40px;
+}
+
+#this3 {
+    background-position: -80px -80px;
+}

@@ -1,0 +1,26 @@
+<head>
+    <title>Quiz 3</title>
+    <link type="text/css" rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+    <div id="this1"></div>
+    <div id="this2"></div>
+    <div id="this3"></div>
+    <div id="this4"></div>
+
+    <p id="m"></p>
+
+    <script>
+        let r = 0;
+        for (let i=1; i<=6; i++) {
+            while (r != i) {
+                r = rand6();
+            }
+            document.getElementById("m").appendChild(document.createTextNode(r));
+        }
+
+        function rand6() {
+            return Math.floor(Math.random() * 6 + 1);
+        }
+    </script>
+</body>
