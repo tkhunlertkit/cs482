@@ -1,0 +1,49 @@
+\documentclass[letterpaper]{exam}
+
+\usepackage[margin=1in, top=0.7in]{geometry}
+\usepackage{tikz}
+
+\usepackage{listings}
+
+\tikzstyle{block} = [rectangle, draw, text centered, minimum width = 3em, minimum height = 3em]
+
+\begin{document}
+
+\begin{center}
+	\textbf{CS 482 - Rich Internet Applications} \\
+	\textbf{Section 801} \\
+	\textbf{Quiz 4} \\
+	\vspace{5mm}
+	\makebox[\textwidth]{Name :\enspace\hrulefill} \\
+\end{center}
+
+
+\begin{questions}
+	\question[10] Write \texttt{jQuery} (\emph{quiz.js}) and \texttt{CSS} (\emph{quiz.css}) code to modify the following webpage. The \texttt{title} should initially have a \emph{red} background color and \emph{white} text. When the \texttt{title} div is clicked the \texttt{body} div, \emph{initially not displayed}, slides down from the title. The \texttt{title}'s background switches to \emph{blue}, and the text becomes \emph{black}. If the \texttt{title} is clicked again, the \texttt{body} fades away, and the \texttt{title} resumes its \emph{red} background, \emph{white} text state.
+	
+	
+	\begin{lstlisting}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>quiz</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="quiz.js"></script>
+    <link href="quiz.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="title">This quiz is so much fun!</div>
+    <div id="body">
+	  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+	  Suspendisse ut ligula pellentesque, fringilla sem tempor, 
+	  aliquet dui. Integer convallis, sem iaculis ornare varius, 
+	  risus justo scelerisque orci, eget sagittis tortor felis. 
+	</div>
+  </body>
+</html>
+	\end{lstlisting}
+		
+\end{questions}
+
+
+\end{document}

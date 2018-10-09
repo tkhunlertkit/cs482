@@ -1,0 +1,8 @@
+#body {
+    display: none;
+}
+
+#title {
+    background-color: red;
+    color: white;
+}
