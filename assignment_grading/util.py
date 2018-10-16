@@ -28,4 +28,4 @@ if __name__ == '__main__':
             unzip(file_a, name_a)
             num_student += 1
 
-    print('total studnet : %d' % num_student)
+    print('total student : %d' % num_student)

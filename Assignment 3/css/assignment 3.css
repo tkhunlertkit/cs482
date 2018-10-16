@@ -27,3 +27,7 @@ input {
     display: none;
     list-style: none;
 }
+
+.detail {
+    background-color: lightgrey;
+}
