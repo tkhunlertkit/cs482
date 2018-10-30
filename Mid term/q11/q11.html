@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Q11</title>
+    <script>
+        function appendData() {
+            var fnameElem = document.getElementById("fname");
+            var lnameElem = document.getElementById("lname");
+            var dowElem = document.getElementById("dow");
+
+            let tr = document.createElement("tr");
+            tr.innerHTML += "<td>" + fnameElem.innerHTML + "</td>";
+            tr.innerHTML += "<td>" + lnameElem.value + "</td>";
+            tr.innerHTML += "<td>" + dowElem.value + "</td>";
+            document.getElementById("out").appendChild(tr);
+
+            fnameElem.value = "";
+            lnameElem.value = "";
+            dowElem.value = "";
+
+            var test = document.createElement("td");
+            test.innerText = "hello";
+            test.innerHTML = "blah";
+            console.log(test);
+        }
+
+        window.addEventListener("load", function() {
+            document.getElementById("submitBttn").addEventListener("click", appendData);
+        });
+    </script>
+    <style>
+        form {
+                background-color: blue;
+            }
+
+            #submitBttn {
+                background-color: red;
+                color: white;
+            }
+        </style>
+</head>
+
+<body>
+    <form action="javascript:void(0);">
+        <input type="text" id="fname" placeholder="first name" name="fname" />
+        <input type="text" id="lname" placeholder="last name" name="lname" />
+        <input type="text" id="dow" placeholder="day of week" name="dow" />
+        <button id="submitBttn">submit</button>
+    </form>
+    <table id="out"></table>
+</body>
+
+</html>
