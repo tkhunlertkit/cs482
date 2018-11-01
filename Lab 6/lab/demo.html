@@ -1,0 +1,41 @@
+<html>
+<head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script>
+  function receive(result)
+  {
+    $("#results").html(JSON.stringify(result));
+  }
+  
+  function send()
+  {
+    var location = document.getElementById("location").value;
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=ab42340b8079c4162649074768a4f6a6";
+  $.ajax(
+  {
+    "url":url,
+    "success": function(x){
+      $("#result").html(JSON.stringify(x)); console.log(x)
+    },
+    "error": function(x){
+      alert("Error!"+JSON.stringify(x));
+    },
+  });
+}
+function start()
+{
+  $("#suggest").click(send);
+}
+$(start);
+</script>
+</head>
+<body>
+<input type="text" id="location"/><br/>
+<button id="suggest">get suggestions</button>
+<div id="results"></div>
+</body>
+</html>

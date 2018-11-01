@@ -1,6 +1,5 @@
 
 $(document).ready(function () {
-    $("#title").style("color: pink;");
     $("#title").click(function () {
         let $body = $("#body");
         if ($body.is(":visible")) {

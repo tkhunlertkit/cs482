@@ -9,12 +9,9 @@ var fourQuery = "restaurant";
 var openWeatherUrl = "https://api.openweathermap.org/data/2.5/weather";
 var openWeatherAPPID = "661adeba794b874ebe3c0ff889a608d7";
 
-
 // Form submission logic
 var formSubmit = function () {
     var req = getInfo();
-
-
     let $openWeatherInfo = $("#openWeatherInfo");
     let $fourData = $("#fourSquareRestaurants");
 
@@ -35,7 +32,6 @@ var formSubmit = function () {
         dataType : 'jsonp',
     })
         .done(function (data) {
-
             $fourData.text("");
             let randResIndices = randoms(req.numRecommends, data.response.venues.length);
             for (let i in randResIndices) {
@@ -64,8 +60,11 @@ var formSubmit = function () {
             $openWeatherInfo.append($("<li></li>").text("Temperature (highest): " + convertToFahrenheit(data.main.temp_max)));
             $openWeatherInfo.append($("<li></li>").text("Temperature (now): " + convertToFahrenheit(data.main.temp)));
             $openWeatherInfo.append($("<li></li>").text("Temperature (lowest): " + convertToFahrenheit(data.main.temp_min)));
-            $openWeatherInfo.append($("<li></li>").text("cloud: " + data.weather[0].description));
+            $openWeatherInfo.append($("<li></li>").text(
+                "cloud: " + data.weather[0].description + " with " + data.clouds.all + "% coverage"
+            ));
             $openWeatherInfo.slideDown("fast");
+            console.log(data);
         })
         .fail(function (err) {
             console.log("FAIL");

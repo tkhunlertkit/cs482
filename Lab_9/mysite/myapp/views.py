@@ -17,7 +17,13 @@ def index(request):
     # print(request.META['REMOTE_ADDR'])
     # print(current_time)
     # print(datetime.now())
-    for vi in Visit.objects.all():
+    for vi in Visit.objects.values('browser'):
         print(vi)
-    context = {'visits': Visit.objects.all()}
+    context = {
+        'visits': Visit.objects.all(), 
+        'browsers': Visit.objects.values('browser').distinct(),
+    }
     return render(request, 'index.html', context=context)
+
+
+SELECT Distinct(browser) FROM Visit 

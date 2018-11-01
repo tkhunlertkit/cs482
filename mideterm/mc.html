@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+document.body.innerHTML += "0 && \"yes\" :: " + (0 && "yes") + "<br/>";
+document.body.innerHTML += "1 && \"yes\" :: " + (1 && "yes") + "<br/>";
+document.body.innerHTML += "\"yes\" && 0 :: " + ("yes" && 0) + "<br/>";
+document.body.innerHTML += "\"yes\" && 1 :: " + ("yes" && 1) + "<br/>";
+document.body.innerHTML += "parseInt(\"1`sdjkhfjdskhf29\") ::: " + parseInt("1`sdjkhfjdskhf29") + "<br/>";
+document.body.innerHTML += "parseInt(\"sdjkhfjdskhf29\") ::: " + parseInt("sdjkhfjdskhf29") + "<br/>";
+document.body.innerHTML += "parseInt(\"sdfsdf7sdjkhfjdskhf29\") ::: " + parseInt("sdfsdf7sdjkhfjdskhf29") + "<br/>";
+</script>
+
+</body>
+</html>
