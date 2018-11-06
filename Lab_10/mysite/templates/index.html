@@ -1,0 +1,19 @@
+{% load static %}
+
+<head>
+    <title>This is a title</title>
+    <link rel="stylesheet" type="text/css" href="{% static "myapp/style/style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static "myapp/js/myapp.js" %}"></script>
+</head>
+<body>
+    <form action="javascript:void(0);" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" id="name"/>
+        <br>
+        <textarea rows="4" cols="35" id="message" name="message"></textarea>
+        <br>
+        <input type="submit" value="Send" id="submit"/>
+    </form>
+    "{% csrf_token %}"
+</body>
