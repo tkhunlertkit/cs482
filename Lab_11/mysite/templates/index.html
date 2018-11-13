@@ -1,0 +1,50 @@
+{% load static %}
+
+<head>
+    <title>My Turtle !!!!</title>
+    <link rel="stylesheet" type="text/css" href="{% static "myapp/style/style.css" %}">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script src="{% static "myapp/js/myapp.js" %}"></script>
+</head>
+<body>
+    User: 
+    <select id="select">
+        <option value="">-</option>
+        {% for user in users %}
+        <option value="{{ user.name }}">{{ user.name }}</option>
+        {% endfor %}
+    </select>
+
+    <div>
+        {% if current_user %}
+        <form action="javascript:void(0);">
+            {% csrf_token %}
+            <input type="text" value={{ current_user.name }} readonly>
+            <br>
+            dob: <input type="text" value={{ current_user.dob }}>
+            <br>
+            level: <input type="text" value={{ current_user.level }}>
+            <br>
+            level: <input type="text" value={{ current_user.faction }}>
+            <br>
+            <input type="submit" value="Send" id="submit"/>
+        </form>
+        {% endif %}
+    </div>
+
+    <button id="newUser">New User</button>
+
+    <div id="board">
+        {% for message in messages %}
+            <div class="message">
+                <p class="time">{{ message.timestamp }}</p>
+                <p class="name">{{ message.name }} says:</p>
+                <p class="content">{{ message.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>

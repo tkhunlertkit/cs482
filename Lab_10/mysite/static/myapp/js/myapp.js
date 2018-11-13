@@ -16,13 +16,15 @@ function getCookie(name) {
 }
 
 function mySubmit() {
+    alert("Hello");
     var name = $("#name").val();
     var message = $("#message").val();
     var data = {
         name: name,
         message: message
     }
-    
+    console.log("here");
+    console.log(Cookies.get('csrftoken'));
     infoReload(data);
 }
 
@@ -46,7 +48,7 @@ function infoReload(data) {
 }
 
 $(function () {
-    $("#submit").click(mySubmit)
+    $("#submit").click(mySubmit);
     var csrftoken = getCookie('csrftoken');
     $.ajaxSetup({beforeSend: function(xhr, settings){
         xhr.setRequestHeader('X-CSRFToken', csrftoken);
