@@ -16,12 +16,13 @@ p.name {
     font-size: 10pt;
 }
 
-div.message {
+table {
     background-color: white;
     border-radius: 25px;
     margin: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
     width: 300px;
 }
 
@@ -35,5 +36,5 @@ textarea, input {
 
 #name {
     text-align: center;
-    
+
 }

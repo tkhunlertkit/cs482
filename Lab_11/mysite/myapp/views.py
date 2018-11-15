@@ -8,37 +8,54 @@ from django.forms.models import model_to_dict
 # Create your views here.
 class Home(View):
     def get(self, request):
-        users = User.objects.all()
-        return render(request, "index.html", {"users": users})
+        users = User.objects.all().order_by("name")
+        current_user = model_to_dict(users[0]) if users.count() > 0 else None
+        return render(
+            request,
+            "index.html",
+            {
+                "current_user": current_user,
+                "users": users,
+            }
+        )
 
     def post(self, request):
-
-        ret_usr = []
-        user_name = request.POST["name"]
-        print(user_name)
+        post = request.POST
+        user_name = post["name"]
         user = User.objects.filter(name=user_name)
+        ret_usr = None
+
         if user.count() > 0:
             ret_usr = user[0]
+            ret_usr.dob = post["dob"] if "dob" in post else ret_usr.dob
+            ret_usr.level = post["level"] if "level" in post else ret_usr.level
+            ret_usr.faction = post["faction"] if "faction" in post else ret_usr.faction
+            ret_usr.save()
+
+
         else:
-            print("name is :: " + user_name) 
+            if user_name:
+                print("adding username :: " + user_name)
+                user = User(name=user_name)
+                user.save()
+                ret_usr = user
 
-            user = User(name=user_name)
-            user.save()
-            ret_usr = user
+        users = list(User.objects.values("name").order_by("name"))
+        print(users)
+        ret_usr = model_to_dict(ret_usr) if ret_usr else None
 
-            print('query', '\n'.join([x.name for x in User.objects.all()]))
-            print("dict :: ", type(user))
+        return JsonResponse({
+            "current_user": ret_usr,
+            "users": users,
+        })
 
-        
-        return JsonResponse({"current_user": model_to_dict(user)})
 
+class Page2(View):
+    def get(self, request):
+        data = dict(users=list(User.objects.values("name", "dob", "level", "faction").order_by('dob')))
 
-    # def post(self, request):
-    #     print("name is :: " + request.POST["name"]) 
+        return render(request, 'page2.html', {"data": data})
 
-    #     User(name=request.POST["name"]).save()
-
-    #     print('query', '\n'.join([x.name for x in User.objects.all()]))
-    #     data = dict(users=list(User.objects.values("name", "dob", "level", "faction").order_by('dob')))
-        
-    #     return JsonResponse(data)
+    def post(self, request):
+        data = dict(users=list(User.objects.values("name", "dob", "level", "faction").order_by('dob')))
+        return JsonResponse(data)

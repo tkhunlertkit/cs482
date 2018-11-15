@@ -11,40 +11,30 @@
     <script src="{% static "myapp/js/myapp.js" %}"></script>
 </head>
 <body>
-    User: 
+    User:
     <select id="select">
+        {% if not users %}
         <option value="">-</option>
+        {% endif %}
         {% for user in users %}
         <option value="{{ user.name }}">{{ user.name }}</option>
         {% endfor %}
     </select>
 
     <div>
-        {% if current_user %}
         <form action="javascript:void(0);">
             {% csrf_token %}
-            <input type="text" value={{ current_user.name }} readonly>
+            <h1 id="name">{{ current_user.name }}</h1>
             <br>
-            dob: <input type="text" value={{ current_user.dob }}>
+            dob: <input type="date" value="{{ current_user.dob | date:"c" }}" id="dob">
             <br>
-            level: <input type="text" value={{ current_user.level }}>
+            level: <input type="text" value="{{ current_user.level }}" id="level">
             <br>
-            level: <input type="text" value={{ current_user.faction }}>
-            <br>
-            <input type="submit" value="Send" id="submit"/>
+            faction: <input type="text" value="{{ current_user.faction }}" id="faction">
         </form>
-        {% endif %}
     </div>
 
     <button id="newUser">New User</button>
-
-    <div id="board">
-        {% for message in messages %}
-            <div class="message">
-                <p class="time">{{ message.timestamp }}</p>
-                <p class="name">{{ message.name }} says:</p>
-                <p class="content">{{ message.content }}</p>
-            </div>
-        {% endfor %}
-    </div>
+    <br>
+    <a href="/page2">Page 2</a>
 </body>

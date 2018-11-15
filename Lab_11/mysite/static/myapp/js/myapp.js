@@ -16,7 +16,6 @@ function getCookie(name) {
 }
 
 function mySubmit() {
-    alert("Hello");
     var name = $("#name").val();
     var message = $("#message").val();
     var data = {
@@ -29,37 +28,69 @@ function mySubmit() {
 }
 
 function infoReload(data) {
+    currentName = data.name;
     $.ajax({
         type: "POST",
         url: "#",
         data: data,
         success: function(data) {
+            // Select options
             console.log(data);
-            $("#board").html("");
-            for (let i in data.messages) {
-                let pTime = $("<p class=\"time\"></p>").text(data.messages[i].timestamp);
-                let pName = $("<p class=\"name\"></p>").text(data.messages[i].name + " says:");
-                let pContent = $("<p class=\"content\"></p>").text(data.messages[i].content);
-                var item = $("<div class=message></div>");
-                item.append(pTime).append(pName).append(pContent);
-                $("#board").append(item);
+            if (data.users.length > 0) {
+                $("#select").html("");
+                for (let i in data.users) {
+                    name = data.users[i].name;
+                    let option = $("<option></option>").val(name).text(name);
+                    if (name === currentName) {
+                        option.attr("selected", true);
+                    }
+                    $("#select").append(option);
+                }
+            }
+
+            // User data
+            if (data.current_user) {
+                $("#name").text(data.current_user.name);
+                $("#dob").val(data.current_user.dob);
+                $("#level").val(data.current_user.level);
+                $("#faction").val(data.current_user.faction);
+            } else {
+                $("#name").text("");
+                $("#dob").val("");
+                $("#level").val("");
+                $("#faction").val("");
             }
         }
     });
 }
 
 function addNewUser() {
-    alert("Clicked!!");
-    name = prompt("Enter Name");
-    infoReload({"name": name});
+    var name = prompt("Enter Name");
+    infoReload({name: name});
+}
+
+function infoChanged() {
+    var name = $("#name").text();
+    var dob = $("#dob").val();
+    var level = $("#level").val();
+    var faction = $("#faction").val();
+
+    infoReload({
+        name: name,
+        dob: dob,
+        level: level,
+        faction: faction
+    })
 }
 
 $(function () {
+    $("input").change(infoChanged);
     $("#submit").click(mySubmit);
     $("#select").change(function(){
         var option = $(this).children("option:selected").val();
-        alert(option);
-        infoReload({data: option});
+        if (option) {
+            infoReload({name: option});
+        }
     });
     $("#newUser").click(addNewUser);
     var csrftoken = getCookie('csrftoken');
