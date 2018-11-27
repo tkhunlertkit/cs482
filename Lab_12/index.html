@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            text-align: left;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        input {
+            line-height: 200%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+    <div ng-app="myApp" ng-controller="conversion">
+        <table>
+            <tr>
+                <th>Unit</th>
+                <th>Eng Unit</th>
+                <th>Metric Unit</th>
+            </tr>
+            <tr>
+                <td>Length</td>
+                <td><input type="number" ng-init="length=0" ng-model="length" > Inches</td>
+                <td><span>{{ length * 30 / 12 | number:2}}</span> Centimeters</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td><input type="number" ng-init="weight=0" ng-model="weight" > Pounds</td>
+                <td><span>{{ weight * 0.4535970244 | number:2 }}</span> Kilograms</td>
+            </tr>
+            <tr>
+                <td>Volume</td>
+                <td><input type="number" ng-init="volume=0" ng-model="volume" > fl ounces</td>
+                <td><span>{{ volume * 29.5735 | number:2 }}</span> Milliliters</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="App2" ng-app="colorList" ng-controller="colorController" style="background-color:rgb({{myCol.red}}, {{myCol.green}}, {{myCol.blue}}">
+        <table>
+            <tr>
+                <td><input type="text" placeholder="Color Name"  ng-model="color.name"></td>
+                <td><input type="number" min=0 max=255 placeholder="Red Value"   ng-model="color.red"></td>
+                <td><input type="number" min=0 max=255 placeholder="Green Value" ng-model="color.green"></td>
+                <td><input type="number" min=0 max=255 placeholder="Blue Value"  ng-model="color.blue"></td>
+            </tr>
+        </table>
+
+        <h2>name = {{ color.name }}</h2>
+
+        <button ng-click="add()">Add</button>
+        <select ng-model="myCol" ng-options="color.name for color in colors"></select>
+    </div>
+
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('conversion', function(){});
+
+        var app2 = angular.module('colorList', []);
+        app2.controller('colorController', function ($scope) {
+            $scope.colors = [{name: "white", "red":255, "green":255, "blue":255}];
+            $scope.add = function () {
+                $scope.colors.push($scope.color);
+                $scope.color = { "name": "", "red": "", "green": "", "blue": "" };
+            };
+            $scope.myCol = $scope.colors[0];
+        });
+        angular.bootstrap(document.getElementById("App2"), ['colorList']);
+    </script>
+
+</body>
+
+</html>
