@@ -60,17 +60,17 @@
     <div id="App2" ng-app="colorList" ng-controller="colorController" style="background-color:rgb({{myCol.red}}, {{myCol.green}}, {{myCol.blue}}">
         <table>
             <tr>
-                <td><input type="text" placeholder="Color Name"  ng-model="color.name"></td>
-                <td><input type="number" min=0 max=255 placeholder="Red Value"   ng-model="color.red"></td>
-                <td><input type="number" min=0 max=255 placeholder="Green Value" ng-model="color.green"></td>
-                <td><input type="number" min=0 max=255 placeholder="Blue Value"  ng-model="color.blue"></td>
+                <td><input type="text" placeholder="Color Name"  ng-model="myCol.name"></td>
+                <td><input type="number" min=0 max=255 placeholder="Red Value"   ng-model="myCol.red"></td>
+                <td><input type="number" min=0 max=255 placeholder="Green Value" ng-model="myCol.green"></td>
+                <td><input type="number" min=0 max=255 placeholder="Blue Value"  ng-model="myCol.blue"></td>
             </tr>
         </table>
 
-        <h2>name = {{ color.name }}</h2>
+        <h2>name = {{ myCol.name }}</h2>
 
         <button ng-click="add()">Add</button>
-        <select ng-model="myCol" ng-options="color.name for color in colors"></select>
+        <select ng-model="selectedCol" ng-change="onChange()" ng-options="color.name for color in colors"></select>
     </div>
 
 
@@ -80,12 +80,27 @@
 
         var app2 = angular.module('colorList', []);
         app2.controller('colorController', function ($scope) {
-            $scope.colors = [{name: "white", "red":255, "green":255, "blue":255}];
+            $scope.colors = [{ "name": "white", "red": "255", "green": "255", "blue": "255" }];
             $scope.add = function () {
-                $scope.colors.push($scope.color);
+                $scope.colors.push({
+                    name: $scope.myCol.name,
+                    red: $scope.myCol.red,
+                    green: $scope.myCol.green,
+                    blue: $scope.myCol.blue,
+                });
                 $scope.color = { "name": "", "red": "", "green": "", "blue": "" };
             };
-            $scope.myCol = $scope.colors[0];
+            $scope.myCol.name = $scope.colors[0].name;
+            $scope.myCol.red = $scope.colors[0].red;
+            $scope.myCol.green = $scope.colors[0].green;
+            $scope.myCol.blue = $scope.colors[0].blue;
+            $scope.selectedCol = scope.colors[0];
+            $scope.onChange = function () {
+                $scope.myCol.name = $scope.selectedCol.name;
+                $scope.myCol.red = $scope.selectedCol.red;
+                $scope.myCol.blue = $scope.selectedCol.blue;
+                $scope.myCol.green = $scope.selectedCol.green;
+            };
         });
         angular.bootstrap(document.getElementById("App2"), ['colorList']);
     </script>

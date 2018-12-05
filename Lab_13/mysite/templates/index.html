@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.js"></script>
+    <title>My Turtle !!!!</title>
+    <link rel="stylesheet" type="text/css" href="{% static "myapp/style/style.css" %}">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script src="{% static "myapp/js/myapp.js" %}"></script>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            text-align: left;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        input {
+            line-height: 200%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+    {% csrf_token %}
+    <div ng-app="myApp" ng-controller="myController">
+        Username: <input type="text" ng-model="username" required>
+        <h2>{% verbatim %}{{ username }}{% endverbatim %}</h2>
+        <button ng-click="submitForm()">Add User</button>
+    </div>
+
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myController', function($scope, $http){
+            $scope.submitForm = function() {
+                var csrftoken = Cookies.get('csrftoken');
+                $http({
+                    method: "POST",
+                    url:"#",
+                    data: {"username": "hello"},
+                    headers:{"X-CSRFToken":csrftoken},
+                }).then(function success(response) {
+                    $scope.username = response.data;
+                }, function myError(response) {
+                    alert("error");
+                });
+                console.log($scope.username);
+                return false;
+            };
+        });
+
+        var app2 = angular.module('colorList', []);
+        app2.controller('colorController', function ($scope) {
+            $scope.colors = [{ "name": "white", "red": "255", "green": "255", "blue": "255" }];
+            $scope.add = function () {
+                $scope.colors.push({
+                    name: $scope.myCol.name,
+                    red: $scope.myCol.red,
+                    green: $scope.myCol.green,
+                    blue: $scope.myCol.blue,
+                });
+                $scope.color = { "name": "", "red": "", "green": "", "blue": "" };
+            };
+            $scope.myCol.name = $scope.colors[0].name;
+            $scope.myCol.red = $scope.colors[0].red;
+            $scope.myCol.green = $scope.colors[0].green;
+            $scope.myCol.blue = $scope.colors[0].blue;
+            $scope.selectedCol = scope.colors[0];
+            $scope.onChange = function () {
+                $scope.myCol.name = $scope.selectedCol.name;
+                $scope.myCol.red = $scope.selectedCol.red;
+                $scope.myCol.blue = $scope.selectedCol.blue;
+                $scope.myCol.green = $scope.selectedCol.green;
+            };
+        });
+        angular.bootstrap(document.getElementById("App2"), ['colorList']);
+    </script>
+
+</body>
+
+</html>
