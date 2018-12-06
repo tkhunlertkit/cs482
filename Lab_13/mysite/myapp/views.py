@@ -10,10 +10,11 @@ class Home(View):
         return render(request, "index.html")
 
     def post(self, request):
-        print(request)
-        User(username=request.POST["username"]).save()
+        print(request.POST["username"])
+        print(request.GET)
+        # User(username=request.POST["username"]).save()
         
-        users = User.objects.all()
-        data = dict(users=list(User.objects.values("username")))
+        # users = User.objects.all()
+        # data = dict(users=list(User.objects.values("username")))
         
-        return JsonResponse(data)
+        return JsonResponse({"one": "1", "two": 2})

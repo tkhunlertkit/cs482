@@ -12,7 +12,7 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
-    <script src="{% static "myapp/js/myapp.js" %}"></script>
+    <!-- <script src="{% static "myapp/js/myapp.js" %}"></script> -->
     <style>
         table {
             margin-left: auto;
@@ -44,22 +44,25 @@
     <div ng-app="myApp" ng-controller="myController">
         Username: <input type="text" ng-model="username" required>
         <h2>{% verbatim %}{{ username }}{% endverbatim %}</h2>
-        <button ng-click="submitForm()">Add User</button>
+        <button ng-click="clickSubmit()">Add User</button>
     </div>
 
 
     <script>
         var app = angular.module('myApp', []);
         app.controller('myController', function($scope, $http){
-            $scope.submitForm = function() {
+            $scope.clickSubmit = function() {
                 var csrftoken = Cookies.get('csrftoken');
                 $http({
                     method: "POST",
                     url:"#",
-                    data: {"username": "hello"},
-                    headers:{"X-CSRFToken":csrftoken},
+                    data: "username=" + $scope.username,
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
                 }).then(function success(response) {
-                    $scope.username = response.data;
+                    console.log(response);
                 }, function myError(response) {
                     alert("error");
                 });
