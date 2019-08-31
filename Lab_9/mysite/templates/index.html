@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <title>This is a title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>IP</th>
+            <th>Browser</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for i in visits %}
+        <tr>
+            <td>{{ i.ip_addr }}</td>
+            <td>{{ i.browser }}</td>
+            <td>{{ i.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Browser</th>
+        </tr>
+        {% for i in browsers %}
+        <tr><td>{{ i.browser }}</td></tr>
+        {% endfor %}
+    </table>
+</body>

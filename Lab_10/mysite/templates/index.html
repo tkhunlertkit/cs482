@@ -1,0 +1,32 @@
+{% load static %}
+
+<head>
+    <title>My Turtle !!!!</title>
+    <link rel="stylesheet" type="text/css" href="{% static "myapp/style/style.css" %}">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script src="{% static "myapp/js/myapp.js" %}"></script>
+</head>
+<body>
+    <form action="javascript:void(0);">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" id="name"/>
+        <br>
+        <textarea rows="4" cols="35" id="message" name="message"></textarea>
+        <br>
+        <input type="submit" value="Send" id="submit"/>
+    </form>
+
+    <div id="board">
+        {% for message in messages %}
+            <div class="message">
+                <p class="time">{{ message.timestamp }}</p>
+                <p class="name">{{ message.name }} says:</p>
+                <p class="content">{{ message.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>

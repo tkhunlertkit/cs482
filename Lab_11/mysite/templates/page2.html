@@ -1,0 +1,35 @@
+{% load static %}
+
+<head>
+    <title>My Turtle !!!!</title>
+    <link rel="stylesheet" type="text/css" href="{% static "myapp/style/style.css" %}">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+    <script src="{% static "myapp/js/page2.js" %}"></script>
+</head>
+<body>
+    {% csrf_token %}
+    <div>
+        <table id="out">
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Faction</th>
+                <th>DOB</th>
+            </tr>
+            {% for user in data.users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.level }}</td>
+                    <td>{{ user.faction }}</td>
+                    <td>{{ user.dob }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <a href="/myapp">Page 1</a>
+</body>

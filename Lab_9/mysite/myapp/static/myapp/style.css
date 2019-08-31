@@ -1,0 +1,13 @@
+table, tr, td, th {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: Gainsboro;
+}
+
+th {
+    background-color: aquamarine;
+}

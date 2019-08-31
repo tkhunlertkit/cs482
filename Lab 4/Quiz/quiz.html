@@ -3,7 +3,7 @@
         var items = ['brats', 'cheese curds', 'frozen custard'];
 
         function newItem() {
-            let item = items.remove();
+            let item = items.shift();
             document.getElementById("groc").innerHTML += "<li>" + item + "</li>";
             items.push(item);
         }
