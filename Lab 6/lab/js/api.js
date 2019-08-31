@@ -1,12 +1,9 @@
-
-var fourClient = [
-    "https://api.foursquare.com/v2/venues/search?",
-    "client_id=KDK3UGDYCKBAKNC3VBSZO1TNRGMZ24F1JT1M2KFG5LWKZ5JS",
-    "client_secret=YZRUJJVFH1TQJKXPBQ4KNMNL1BNRBEFXCCBUEQHIK0CKX1K2",
-    "v=20181005",
-    "limit=3",
-    "query=restaurant",
-];
+var fourClientBase = "https://api.foursquare.com/v2/venues/search?";
+var fourClientID = "KDK3UGDYCKBAKNC3VBSZO1TNRGMZ24F1JT1M2KFG5LWKZ5JS";
+var fourClientSecret = "YZRUJJVFH1TQJKXPBQ4KNMNL1BNRBEFXCCBUEQHIK0CKX1K2";
+var fourClientversion = "20181005";
+var fourClientLimit = "3";
+var fourClientQuery = "restaurant";
 
 var getInfo = function() {
     let req = {};
@@ -20,15 +17,26 @@ var getInfo = function() {
 var formSubmit = function() {
     var req = getInfo();
 
-    var fourClientSearchTerms = "near=" + req.city + "," + req.state;
-    var fourParams = fourClient.concat([fourClientSearchTerms]).join("&");
+    var fourClientSearchTerms = req.city + "," + req.state;
 
-    console.log(fourParams)
-    $.ajax( fourParams )
+    $.ajax({
+        url: fourClientBase,
+        data: {
+            "client_id": fourClientID,
+            "client_secret": fourClientSecret,
+            "v": fourClientversion,
+            "limit": fourClientLimit,
+            "query": fourClientQuery,
+            "near": fourClientSearchTerms,
+        },
+        cache: false,
+        type: "GET",
+    })
         .done(function(data) {
+            $("#fourSquareData ul").text("");
             var venues = [];
             $(data.response.venues).each(function() {
-                $("#fourSquareData").append;
+                $("#fourSquareData ul").append($("<li></li>").text(this.name));
             });
             console.log(data.response.venues);
         })
