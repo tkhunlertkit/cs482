@@ -24,13 +24,13 @@ input[type=email] {
     width: 300px;
 }
 
-input {
+input, select, textarea {
     border-color: rgb(192,192,192);
     border-style: solid;
     border-radius: 10px;
     margin: 5px;
     margin-right: 10px;
-    margin-left: 120px;
+    margin-left: 10px;
     line-height: 2.5;
     padding-left:  20px;
     padding-right: 20px;

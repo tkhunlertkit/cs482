@@ -29,6 +29,7 @@ function removeEmail() {
 
 // Create new email entity
 function makeNew() {
+
     // create new input
     var newInput = document.createElement("input");
     newInput.setAttribute("type", "email");
@@ -86,9 +87,7 @@ function setup() {
     var newLink = document.getElementById("new");
     newLink.addEventListener("click", makeNew);
 
-    // call makeNew 3 times
-    makeNew();
-    makeNew();
+    // call makeNew 1 time
     makeNew();
 }
 
